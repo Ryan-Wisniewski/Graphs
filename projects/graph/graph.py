@@ -19,7 +19,10 @@ class Graph:
         """
         Add a directed edge to the graph.
         """
-        self.vertices[v1].add(v2)
+        if v1 in self.vertices and v2 in self.vertices:
+            self.vertices[v1].add(v2)
+        else:
+            raise IndexError('Verticy does not exist.')
 
     def get_neighbors(self, vertex_id):
         """
@@ -30,20 +33,82 @@ class Graph:
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
-        beginning from starting_vertex. bredth = across
+        beginning from starting_vertex. 
+        bredth = across and queu
+        The way I did it feels like cheating.
         """
-        current_vertex = 
-        Queue.enqueue(starting_vertex)
+        # Memo this ### Create a queue/stack as appropriate
+        print('started BFT')
+        queue = Queue()
+        # put starting point in that 
+        queue.enqueue(starting_vertex)
+        #Make a set to keep track of where weve been ##### heh it was the first option nor did you pop anything. but good try.
+        visited = set()
+        #while there is stuff in the queue/stack
+        print(queue.queue)
+        while len(queue.queue) > 0:
+        #   pop the first item
+            vertex = queue.dequeue()
+        #   if not visitied
+            if vertex not in visited:
+        #       DO THE THINGS!
+                print('vertex',vertex)
+                visited.add(vertex)
+        #       For each edge in the item
+                for next_vert in self.get_neighbors(vertex):
+        #           add that edge the queu/stack
+                    queue.enqueue(next_vert)
 
-        
 
+
+        # ######## First attempt ish ####
+        # current_vertex = self.vertices[starting_vertex]
+        # # print('Start here: ', starting_vertex, current_vertex)
+        # queue = Queue()
+        # queue.enqueue(starting_vertex)
+        # # print('queue', queue.queue)
+        # for x in self.vertices:
+        #     current_vertex = self.vertices[x]
+        #     # print('yeet',x, current_vertex)
+        #     for y in current_vertex:
+        #         # print('CHECKHERE',x)
+        #         if y not in queue.queue:
+        #             print('not in queue', y)
+        #             queue.enqueue(y)
+        # print('final queue',queue.queue)
+
+        # #now either set this queue to a empty array to dequeu and try again?
+        # #or simply just return the one valid queu path. (but prob option 1)
+        # heh it was the first option nor did you pop anything. but good try. ### and duh when you use the while loop dat was bett obv for runtime.. 
+        pass
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
-        beginning from starting_vertex. depth = downward
+        beginning from starting_vertex. depth = downward and stack
         """
-        pass
+        # Memo this ### Create a queue/stack as appropriate
+        print('started DFT')
+        stack = Stack()
+        # put starting point in that 
+        stack.push(starting_vertex)
+        #Make a set to keep track of where weve been ##### heh it was the first option nor did you pop anything. but good try.
+        visited = set()
+        #while there is stuff in the queue/stack
+        print(stack.stack)
+        while len(stack.stack) > 0:
+        #   pop the first item
+            vertex = stack.pop()
+        #   if not visitied
+            if vertex not in visited:
+        #       DO THE THINGS!
+                print('vertex',vertex)
+                visited.add(vertex)
+        #       For each edge in the item
+                for next_vert in self.get_neighbors(vertex):
+        #           add that edge the queu/stack
+                    stack.push(next_vert)
 
+        
     def dft_recursive(self, starting_vertex):
         """
         Print each vertex in depth-first order
