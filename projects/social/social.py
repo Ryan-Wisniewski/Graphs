@@ -1,3 +1,4 @@
+import random
 class User:
     def __init__(self, name):
         self.name = name
@@ -43,10 +44,18 @@ class SocialGraph:
         self.users = {}
         self.friendships = {}
         # !!!! IMPLEMENT ME
-
+        #? whatchu what here?
         # Add users
+        for x in range(0, num_users):
+            add_user(x) #names the new pepe a number
 
         # Create friendships
+        #do random to ?? I assume shuffle in random?? 
+        #TODO use create friendship function for each friend
+        #loop through users and (use the avg_friendship parameter) to create friends
+        ##Shouldn't be just the avg should be shuffled or randomized or something.
+
+
 
     def get_all_social_paths(self, user_id):
         """
